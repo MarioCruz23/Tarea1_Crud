@@ -18,3 +18,5 @@ Route::get('/','EstudianteController@lista');
 Route::get('/form','EstudianteController@estuform');
 Route::post('/save','EstudianteController@save')->name('save');
 Route::delete('/delete/{id}','EstudianteController@delete')->name('delete');
+Route::get('/editform/{id}','EstudianteController@editform')->name('editform');
+Route::patch('/edit/{id}','EstudianteController@edit')->name('edit');

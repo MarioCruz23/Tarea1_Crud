@@ -22,17 +22,22 @@
                 <tbody>
                     @foreach($estudiantes as $estudiante)
                      <tr>
-                         <td>{{ $estudiante->nombre }}</td>
-                         <td>{{ $estudiante->apellido }}</td>
-                         <td>{{ $estudiante->correo }}</td>
-                         <td>{{ $estudiante->numero }}</td>
-                         <td>
+                        <td>{{ $estudiante->nombre }}</td>
+                        <td>{{ $estudiante->apellido }}</td>
+                        <td>{{ $estudiante->correo }}</td>
+                        <td>{{ $estudiante->numero }}</td>
+                        <td>
+                        <a href="{{ route ('editform', $estudiante->id) }}" class="btn btn-primary mb-1">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                        <br>
+                        <a>
                             <form action="{{ route('delete', $estudiante->id) }}" method="POST">
                                 @csrf @method('DELETE')
-                                <button type="submit" onclick="return confirm('¿borrar?');" class="btn btn-danger">
+                                <button type="submit" onclick="return confirm('¿Seguro quiere borrar?');" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                                 </button>
-
+                        </a>
                          </td>
                      </tr>   
                     @endforeach

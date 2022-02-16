@@ -23,4 +23,13 @@ class EstudianteController extends Controller
         \App\Models\Estudiante::destroy($id);
         return back()->with('EstudianteELiminado','Registro Eliminado');
     }
+    public function editform($id){
+        $estudiante = \App\Models\Estudiante::findOrFail($id);
+        return view('estudiantes.editform', compact('estudiante'));
+    }
+    public function edit(Request $request, $id){
+        $datoestudiante = request()->except((['_token', '_method']));
+        \App\Models\Estudiante::where('id', '=', $id)->update($datoestudiante);
+        return back()->with('EstudianteModificado','Registro Modificado');
+    }
 }
