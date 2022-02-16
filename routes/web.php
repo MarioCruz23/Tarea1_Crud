@@ -17,4 +17,4 @@ use App\Http\Controllers\EstudianteController;
 Route::get('/','EstudianteController@lista');
 Route::get('/form','EstudianteController@estuform');
 Route::post('/save','EstudianteController@save')->name('save');
-
+Route::delete('/delete/{id}','EstudianteController@delete')->name('delete');

@@ -4,6 +4,11 @@
         <div class="col-md-10">
             <h2 class="text-center mb-5">Estudiantes Registrados</h2>
             <a class="btn btn-success mb-4" href="{{ url('/form') }}">Nuevo registro</a>
+            @if(session('EstudianteELiminado'))
+            <div class="alert alert-success">
+                {{ session('EstudianteELiminado') }}
+            </div>
+            @endif
             <table class="table table-bordered table-strpied text-center">
                 <thead>
                     <tr>
@@ -11,6 +16,7 @@
                         <th>Apellido</th>
                         <th>Correo</th>
                         <th>Numero</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,6 +26,14 @@
                          <td>{{ $estudiante->apellido }}</td>
                          <td>{{ $estudiante->correo }}</td>
                          <td>{{ $estudiante->numero }}</td>
+                         <td>
+                            <form action="{{ route('delete', $estudiante->id) }}" method="POST">
+                                @csrf @method('DELETE')
+                                <button type="submit" onclick="return confirm('¿borrar?');" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i>
+                                </button>
+
+                         </td>
                      </tr>   
                     @endforeach
                 </tbody>

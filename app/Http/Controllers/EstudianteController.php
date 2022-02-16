@@ -19,4 +19,8 @@ class EstudianteController extends Controller
         \App\Models\Estudiante::insert($estudata);
         return back()->with('DatoGuardado','Dato del Estudiante Guardado');
     }
+    public function delete($id){
+        \App\Models\Estudiante::destroy($id);
+        return back()->with('EstudianteELiminado','Registro Eliminado');
+    }
 }
