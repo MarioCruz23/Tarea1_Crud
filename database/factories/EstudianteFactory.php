@@ -2,42 +2,18 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+use App\Estudiante;
+use Faker\Generator;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class UserFactory extends Factory
-{
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition()
-    {
-        return [
-            'nombre' => $this->faker->nombre(),
-            'apellido' => $this->faker->apellido(),
-            'correo' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'numero' => $this->faker->numero(),
-            'remember_token' => Str::random(10),
-        ];
-    }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     *
-     * @return static
-     */
-    public function unverified()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'email_verified_at' => null,
-            ];
-        });
-    }
-}
+$factory->define(Estudiante::class, function(Generator $faker){
+    $array = [
+        'nombre' =>$faker->nombre,
+        'apellido' =>$faker->apellido,
+        'correo' =>$faker->correo,
+        'numero' =>$faker->numero,
+    ];
+    return $array;
+});
